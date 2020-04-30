@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TestBackground</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            body,html{
+                height:100vh;
+                margin: 0;
+            }
+            .day{
+                position: absolute;
+                background-image: url('day-background.png');
+                height:100vh;
+                width:100vw;
+                top:0;
+                left:0;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                display: none;
+                transition: all 1s ease;
+                z-index: 0;
+            }
+            .dayclouds{
+                position: absolute;
+                background-image: url('day-clouds.png');
+                height:100vh;
+                width:100vw;
+                top:0;
+                left:0;
+                background-position: center;
+                opacity:40%;
+                background-size: cover;
+                display: block;
+                z-index: 1;
+                background-repeat: repeat-x;
+                transition: all 1s ease;
+                animation: daycloudsmove 80s linear infinite;
+            }
+            @keyframes daycloudsmove{
+                0%{
+                    background-position: 0px;
+                }
+                100%{
+                    background-position: -1920px;
+                }
+            }
+            #sunray{
+                position: absolute;
+                background-image: url('day-rays.png');
+                height:100vh;
+                width:100vw;
+                top:0;
+                left:0;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                display: block;
+                z-index: 2;
+                transition: all 1s ease;
+                animation:sunrayspop 5s linear infinite;
+            }
+            @keyframes sunrayspop{
+                0%{
+                    opacity:0%;
+                }
+                50%{
+                    opacity: 100%;
+                }
+                100%{
+                    opacity: 0%;
+                }
+            }
+            .sun{
+                position: absolute;
+                background-image: url('day-sun.png');
+                height:100vh;
+                width:100vw;
+                top:0;
+                left:0;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                display: block;
+                transition: all 1s ease;
+                z-index: 3;
+            }
+            .dayfloat{
+                position: absolute;
+                background-image: url('day-floating-island.png');
+                height:100vh;
+                width:100vw;
+                top:0;
+                left:0;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                display: none;
+                transition: all 1s ease;
+                z-index: 250;
+            }
+            .dayplane{
+                position: absolute;
+                background-image: url('day-plane.png');
+                height:100vh;
+                width:100vw;
+                top:0;
+                left:0;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                display: none;
+                transition: all 1s ease;
+                animation: planemove 5s linear infinite;
+                z-index: 250;
+            }
+            @keyframes planemove{
+              0%{
+                transform: translateX(0px);
+              }
+              50%{
+                transform: translateX(100px);
+                }
+                100%{
+                  transform: translateX(0px);
+                }
+            }
+            .dayrocks{
+                position: absolute;
+                background-image: url('day-rocks.png');
+                height:100vh;
+                width:100vw;
+                top:0;
+                left:0;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                display: block;
+                transition: all 1s ease;
+                z-index: 4;
+            }
+            .dayballoon{
+              position: absolute;
+                background-image: url('day-balloon.png');
+                height:100px;
+                width:200px;
+                top:18vh;
+                left:50vw;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
+                display: none;
+                transition: all 1s ease;
+                animation: balloonmove 5s linear infinite;
+                z-index: 4;
+            }
+            @keyframes balloonmove {
+              0%{
+                  transform: translateY(0px);
+              }
+              50%{
+                transform: translateY(-30px);
+              }
+              100%{
+                transform: translateY(0px);
+              }
+              
+            }
+            
+            .night{
+                position: absolute;
+                background-image: url('night-background.png');
+                height:100vh;
+                width:100vw;
+                top:0;
+                left:0;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                display: flex;
+                transition: all 1s ease;
+                z-index: 5;
+            }
+            .nightclouds{
+                position: absolute;
+                background-image: url('night-clouds.png');
+                height:100vh;
+                width:100vw;
+                top:0;
+                left:0;
+                background-position: center;
+                background-repeat: no-repeat;
+                opacity:40%;
+                background-size: cover;
+                display: block;
+                z-index: 6;
+                background-repeat: repeat-x;
+                transition: all 1s ease;
+                animation: nightcloudsmove 80s linear infinite;
+            }
+            @keyframes nightcloudsmove{
+                0%{
+                    background-position: 0px;
+                }
+                100%{
+                    background-position: -1920px;
+                }
+            }
+            #nightray{
+                position: absolute;
+                background-image: url('night-rays.png');
+                height:100vh;
+                width:100vw;
+                top:0;
+                left:0;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                display: block;
+                z-index: 7;
+                transition: all 1s ease;
+                animation:moonrayspop 5s linear infinite;
+            }
+            @keyframes moonrayspop{
+                0%{
+                    opacity:0%;
+                }
+                50%{
+                    opacity: 100%;
+                }
+                100%{
+                    opacity: 0%;
+                }
+            }
+            .moon{
+                position: absolute;
+                background-image: url('night-moon.png');
+                height:100vh;
+                width:100vw;
+                top:0;
+                left:0;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                display: block;
+                transition: all 1s ease;
+                z-index: 8;
+            }
+            .nightfloat{
+                position: absolute;
+                background-image: url('night-floating-island.png');
+                height:100vh;
+                width:100vw;
+                top:0;
+                left:0;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                display: none;
+                transition: all 1s ease;
+                z-index: 250;
+            }
+            .nightplane{
+                position: absolute;
+                background-image: url('night-plane.png');
+                height:100vh;
+                width:100vw;
+                top:0;
+                left:0;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                display: none;
+                transition: all 1s ease;
+                animation: planemove 5s linear infinite;
+                z-index: 251;
+            }
+            .nightballoon{
+              position: absolute;
+                background-image: url('night-balloon.png');
+                height:100px;
+                width:200px;
+                top:18vh;
+                left:50vw;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
+                display: none;
+                transition: all 1s ease;
+                animation: balloonmove 5s linear infinite;
+                z-index: 250;
+            }
+            .nightrocks{
+                position: absolute;
+                background-image: url('night-rocks.png');
+                height:100vh;
+                width:100vw;
+                top:0;
+                left:0;
+                background-position: center center;
+                background-repeat: no-repeat;
+                transition: all 1s ease;
+                background-size: cover;
+                
+                display: block;
+                z-index: 150;
+            }
+            #birdcontainer {
+                z-index: 10;
+                position: relative;
+                overflow: hidden;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                align-items: center;
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                justify-content: center;
+                min-height: 25rem;
+                padding: 2rem;
+                display: block;
+            }
+            .bird {
+                background-image: url(bird-cells.svg);
+                background-size: auto 100%;
+                width: 88px;
+                height: 125px;
+                will-change: background-position;
+                -webkit-animation-name: fly-cycle;
+                animation-name: fly-cycle;
+                -webkit-animation-timing-function: steps(10);
+                animation-timing-function: steps(10);
+                -webkit-animation-iteration-count: infinite;
+                animation-iteration-count: infinite;
+            }
+            .bird--one {
+                -webkit-animation-duration: 1s;
+                animation-duration: 1s;
+                -webkit-animation-delay: -0.5s;
+                animation-delay: -0.5s;
+            }
+            .bird--two {
+                -webkit-animation-duration: 0.9s;
+                animation-duration: 0.9s;
+                -webkit-animation-delay: -0.75s;
+                animation-delay: -0.75s;
+            }
+            .bird--three {
+                -webkit-animation-duration: 1.25s;
+                animation-duration: 1.25s;
+                -webkit-animation-delay: -0.25s;
+                animation-delay: -0.25s;
+            }
+            .bird--four {
+                -webkit-animation-duration: 1.1s;
+                animation-duration: 1.1s;
+                -webkit-animation-delay: -0.5s;
+                animation-delay: -0.5s;
+            }
+            .bird-container {
+                position: absolute;
+                top: 20%;
+                left: -7.5vw;
+                -webkit-transform: scale(0);
+                transform: scale(0);
+                will-change: transform;
+                -webkit-animation-name: fly-right-one;
+                animation-name: fly-right-one;
+                -webkit-animation-timing-function: linear;
+                animation-timing-function: linear;
+                -webkit-animation-iteration-count: infinite;
+                animation-iteration-count: infinite;
+            }
+            .bird-container--one {
+                -webkit-animation-duration: 15s;
+                animation-duration: 15s;
+                -webkit-animation-delay: 0;
+                animation-delay: 0;
+            }
+            .bird-container--two {
+                -webkit-animation-duration: 16s;
+                animation-duration: 16s;
+                -webkit-animation-delay: 1s;
+                animation-delay: 1s;
+            }
+            .bird-container--three {
+                -webkit-animation-duration: 14.6s;
+                animation-duration: 14.6s;
+                -webkit-animation-delay: 9.5s;
+                animation-delay: 9.5s;
+            }
+            .bird-container--four {
+                -webkit-animation-duration: 16s;
+                animation-duration: 16s;
+                -webkit-animation-delay: 10.25s;
+                animation-delay: 10.25s;
+            }
+            @-webkit-keyframes fly-cycle {
+                100% {
+                    background-position: -900px 0;
+                }
+            }
+            @keyframes fly-cycle {
+            100% {
+            background-position: -900px 0;
+            }
+            }
+            @-webkit-keyframes fly-right-one {
+            0% {
+            left: -10%;
+            -webkit-transform: scale(0.3);
+            transform: scale(0.3);
+            }
+            10% {
+            left: 10%;
+            -webkit-transform: translateY(2vh) scale(0.4);
+            transform: translateY(2vh) scale(0.4);
+            }
+            20% {
+            left: 30%;
+            -webkit-transform: translateY(0vh) scale(0.5);
+            transform: translateY(0vh) scale(0.5);
+            }
+            30% {
+            left: 50%;
+            -webkit-transform: translateY(4vh) scale(0.6);
+            transform: translateY(4vh) scale(0.6);
+            }
+            40% {
+            left: 70%;
+            -webkit-transform: translateY(2vh) scale(0.6);
+            transform: translateY(2vh) scale(0.6);
+            }
+            50% {
+            left: 90%;
+            -webkit-transform: translateY(0vh) scale(0.6);
+            transform: translateY(0vh) scale(0.6);
+            }
+            60% {
+            left: 110%;
+            -webkit-transform: translateY(0vh) scale(0.6);
+            transform: translateY(0vh) scale(0.6);
+            }
+            100% {
+            left: 110%;
+            opacity: 1;
+            -webkit-transform: translateY(0vh) scale(0.6);
+            transform: translateY(0vh) scale(0.6);
+            }
+            }
+            @keyframes fly-right-one {
+            0% {
+            left: -10%;
+            -webkit-transform: scale(0.3);
+            transform: scale(0.3);
+            }
+            10% {
+            left: 10%;
+            -webkit-transform: translateY(2vh) scale(0.4);
+            transform: translateY(2vh) scale(0.4);
+            }
+            20% {
+            left: 30%;
+            -webkit-transform: translateY(0vh) scale(0.5);
+            transform: translateY(0vh) scale(0.5);
+            }
+            30% {
+            left: 50%;
+            -webkit-transform: translateY(4vh) scale(0.6);
+            transform: translateY(4vh) scale(0.6);
+            }
+            40% {
+            left: 70%;
+            -webkit-transform: translateY(2vh) scale(0.6);
+            transform: translateY(2vh) scale(0.6);
+            }
+            50% {
+            left: 90%;
+            -webkit-transform: translateY(0vh) scale(0.6);
+            transform: translateY(0vh) scale(0.6);
+            }
+            60% {
+            left: 110%;
+            -webkit-transform: translateY(0vh) scale(0.6);
+            transform: translateY(0vh) scale(0.6);
+            }
+            100% {
+            left: 110%;
+            opacity: 1;
+            -webkit-transform: translateY(0vh) scale(0.6);
+            transform: translateY(0vh) scale(0.6);
+            }
+            }
+            @-webkit-keyframes fly-right-two {
+            0% {
+            left: -10%;
+            opacity: 1;
+            -webkit-transform: translateY(-2vh) scale(0.5);
+            transform: translateY(-2vh) scale(0.5);
+            }
+            10% {
+            left: 10%;
+            -webkit-transform: translateY(0vh) scale(0.4);
+            transform: translateY(0vh) scale(0.4);
+            }
+            20% {
+            left: 30%;
+            -webkit-transform: translateY(-4vh) scale(0.6);
+            transform: translateY(-4vh) scale(0.6);
+            }
+            30% {
+            left: 50%;
+            -webkit-transform: translateY(1vh) scale(0.45);
+            transform: translateY(1vh) scale(0.45);
+            }
+            40% {
+            left: 70%;
+            -webkit-transform: translateY(-2.5vh) scale(0.5);
+            transform: translateY(-2.5vh) scale(0.5);
+            }
+            50% {
+            left: 90%;
+            -webkit-transform: translateY(0vh) scale(0.45);
+            transform: translateY(0vh) scale(0.45);
+            }
+            51% {
+            left: 110%;
+            -webkit-transform: translateY(0vh) scale(0.45);
+            transform: translateY(0vh) scale(0.45);
+            }
+            100% {
+            left: 110%;
+            -webkit-transform: translateY(0vh) scale(0.45);
+            transform: translateY(0vh) scale(0.45);
+            }
+            }
+            @keyframes fly-right-two {
+            0% {
+            left: -10%;
+            opacity: 1;
+            -webkit-transform: translateY(-2vh) scale(0.5);
+            transform: translateY(-2vh) scale(0.5);
+            }
+            10% {
+            left: 10%;
+            -webkit-transform: translateY(0vh) scale(0.4);
+            transform: translateY(0vh) scale(0.4);
+            }
+            20% {
+            left: 30%;
+            -webkit-transform: translateY(-4vh) scale(0.6);
+            transform: translateY(-4vh) scale(0.6);
+            }
+            30% {
+            left: 50%;
+            -webkit-transform: translateY(1vh) scale(0.45);
+            transform: translateY(1vh) scale(0.45);
+            }
+            40% {
+            left: 70%;
+            -webkit-transform: translateY(-2.5vh) scale(0.5);
+            transform: translateY(-2.5vh) scale(0.5);
+            }
+            50% {
+            left: 90%;
+            -webkit-transform: translateY(0vh) scale(0.45);
+            transform: translateY(0vh) scale(0.45);
+            }
+            51% {
+            left: 110%;
+            -webkit-transform: translateY(0vh) scale(0.45);
+            transform: translateY(0vh) scale(0.45);
+            }
+            100% {
+            left: 110%;
+            -webkit-transform: translateY(0vh) scale(0.45);
+            transform: translateY(0vh) scale(0.45);
+            }
+            }
+            #snowcontainer{
+	background-image: url('snow1.png'), url('snow2.png'), url('snow3.png');
+    position: absolute;
+                height:100vh;
+                width:100vw;
+                top:0;
+                left:0;
+                background-position: center;
+                background-repeat: repeat-y;
+                background-size: cover;
+                display: none;
+                z-index: 11;
+                transform: scale(1);
+                animation: snow 80s linear infinite;
+}
+
+@keyframes snow {
+ 0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+ 100% {background-position: 0px 5000px , 0px 5000px , 0px 5000px;}
+}
+canvas {
+                position: absolute;
+                height:100vh;
+                width:100vw;
+                top:0;
+                left:0;
+                display: block;
+}
+#canvas1{
+    opacity: 70%;
+}
+#canvas2{
+    opacity: 50%;
+}
+#canvas3{
+    opacity: 80%;
+}
+#raincontainer {
+    position: absolute;
+                height:100vh;
+                width:100vw;
+                top:0;
+                left:0;
+                display: none;
+                z-index:13;
+    animation: thunder-bg 10s linear infinite;
+}
+@keyframes thunder-bg {
+      0% {
+        background-color: rgba(34,
+34,
+34,
+.9);;
+      }
+      9% {
+        background-color: rgba(34,
+34,
+34,
+.9);
+      }
+      10% {
+        background-color: rgba(59,
+59,
+59,
+.3);
+      }
+      10.5% {
+        background-color: rgba(34,
+34,
+34,
+.9);
+      }
+      80% {
+        background-color: rgba(34,
+34,
+34,
+.9);
+      }
+      82% {
+        background-color: rgba(59,
+59,
+59,
+.3);
+      }
+      83% {
+        background-color: rgba(34,
+34,
+34,
+.9);
+      }
+      83.5% {
+        background-color: rgba(59,
+59,
+59,
+.3);
+      }
+      100% {
+        background-color: rgba(34,
+34,
+34,
+.9);
+      }
+    }
+    .bordertrb{
+      position: absolute;
+                height:90vh;
+                width: 90vw;
+                top:0;
+                left:0;
+                border-top: 1px solid black ;
+                border-right: 1px solid black ;
+                border-bottom: 1px solid black ;
+                border-radius: 15px;
+                margin-top: 5vh;
+                margin-left: 5vw;
+                display: block;
+                z-index:200;
+      }
+      .logo1{
+        background-image: url('page1designlogo1.png');
+                position: absolute;
+                height:30vh;
+                width: 12vw;
+                top:35vh;
+                left:-0.8vw;
+                background-position: center;
+                background-size: contain;
+                background-repeat: no-repeat;
+                display: block;
+                z-index: 201;
+                animation: logo1a 1s linear ;
+      }
+      @keyframes logo1a{
+        0%{
+          transform: translateY(-20vh);
+        }
+        100%{
+          transform:translateY(0vh);
+        }
+      }
+      .logo2{
+        background-image: url('page1designlogo2.png');
+                position: absolute;
+                height:30vh;
+                width: 12vw;
+                top:35vh;
+                left:-0.8vw;
+                background-position: center;
+                background-size: contain;
+                background-repeat: no-repeat;
+                display: block;
+                z-index: 202;
+                animation: logo2a 1s linear ;
+      }
+      @keyframes logo2a{
+        0%{
+          transform: translateY(-15vh);
+        }
+        100%{
+          transform:translateY(0vh);
+        }
+      }
+      .logo3{
+        background-image: url('page1designlogo3.png');
+                position: absolute;
+                height:30vh;
+                width: 12vw;
+                top:35vh;
+                left:-0.8vw;
+                background-position: center;
+                background-size: contain;
+                background-repeat: no-repeat;
+                display: block;
+                z-index: 203;
+                animation: logo3a 1s linear ;
+      }
+      @keyframes logo3a{
+        0%{
+          transform: translateY(-10vh);
+        }
+        100%{
+          transform:translateY(0vh);
+        }
+      }
+      .logo4{
+        background-image: url('page1designlogo4.png');
+                position: absolute;
+                height:30vh;
+                width:12vw;
+                top:35vh;
+                left:-0.8vw;
+                background-position: center;
+                background-size: contain;
+                background-repeat: no-repeat;
+                display: block;
+                z-index: 204;
+                /*animation: logo4a 1s linear ;*/
+      }
+      @keyframes logo4a{
+        0%{
+          height:100vh;
+                width: 100vw;
+                top:0vh;
+                left:0vw;
+        }
+        50%{
+                height:100vh;
+                width: 100vw;
+                top:0vh;
+                left:0vw;
+        }
+        100%{
+          height:30vh;
+          width:12vw;
+          top:35vh;
+          left:-0.8vw;
+        }
+      }
+      .logo5{
+        background-image: url('page1designlogo5.png');
+                position: absolute;
+                height:30vh;
+                width: 12vw;
+                top:35vh;
+                left:-0.8vw;
+                background-position: center;
+                background-size: contain;
+                background-repeat: no-repeat;
+                display: block;
+                z-index: 205;
+                animation: logo5a 1s linear ;
+      }
+      @keyframes logo5a{
+        0%{
+          transform: translateY(10vh);
+        }
+        100%{
+          transform:translateY(0vh);
+        }
+      }
+      .logo6{
+        background-image: url('page1designlogo6.png');
+                position: absolute;
+                height:30vh;
+                width: 12vw;
+                top:35vh;
+                left:-0.8vw;
+                background-position: center;
+                background-size: contain;
+                background-repeat: no-repeat;
+                display: block;
+                z-index: 206;
+                animation: logo6a 1s linear ;
+      }
+      @keyframes logo6a{
+        0%{
+          transform: translateY(15vh);
+        }
+        100%{
+          transform:translateY(0vh);
+        }
+      }
+      .logo7{
+        background-image: url('page1designlogo7.png');
+                position: absolute;
+                height:30vh;
+                width: 12vw;
+                top:35vh;
+                left:-0.8vw;
+                background-position: center;
+                background-size: contain;
+                background-repeat: no-repeat;
+                display: block;
+                z-index: 207;
+                animation: logo7a 1s linear ;
+      }
+      @keyframes logo7a{
+        0%{
+          transform: translateY(20vh);
+        }
+        100%{
+          transform:translateY(0vh);
+        }
+      }
+      .borderlt{
+      position: absolute;
+                height:30vh;
+                width: 90vw;
+                top:0;
+                left:0;
+                border-left: 1px solid black ;
+                border-radius: 15px 0px 0px 0px;
+                margin-top: 5vh;
+                margin-left: 5vw;
+                display: block;
+                z-index:200;
+                animation: borderlta 1s linear ;
+      }
+      @keyframes borderlta{
+        0%{
+          height: 10vh;
+        }
+        100%{
+          height: 30vh;
+        }
+      }
+      .borderlb{
+      position: absolute;
+                height:30vh;
+                width: 90vw;
+                bottom:0;
+                left:0;
+                border-left: 1px solid black ;
+                border-radius: 0px 0px 0px 15px;
+                margin-bottom: 4.8vh;
+                margin-left: 5vw;
+                display: block;
+                z-index:200;
+                animation: borderlba 1s linear ;
+      }
+      @keyframes borderlba{
+        0%{
+          height: 10vh;
+        }
+        100%{
+          height: 30vh;
+        }
+      }
+      .menu{    
+                cursor: pointer;
+      }
+      .span1{
+                position: absolute;
+                height: 1px;
+                width:30px;
+                top:6px;  
+                left:50vw;
+                margin-left: -15px;
+                background-color: black;             
+                display: block;
+                z-index: 211;
+                transition: all 0.4s ease;
+
+      }
+      .span2{
+                position: absolute;
+                height: 1px;
+                width:30px;
+                top:12px; 
+                left:50vw;
+                margin-left: -15px;
+                background-color: black;             
+                display: block;
+                z-index: 211;
+                opacity:1;
+                transition: all 0.4s ease;
+      }
+      .menubutton{
+                position: absolute;
+                height: 3vh;
+                width:100px;
+                top:0px;  
+                left:50vw;
+                margin-left: -50px; 
+                border-bottom: 1px solid black;
+                border-right: 1px solid black;
+                border-left: 1px solid black;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                background-color:rgb(39, 39, 39,0.7);            
+                display: block;
+                z-index: 210;
+                transition: all 0.4s ease;
+      }
+      .menubutton:hover{
+        background-color: black;
+      }
+      .menubutton:hover  ~ .span1{
+        background-color: white;
+      }
+      .menubutton:hover ~ .span2{
+        background-color: white;
+      }
+      .change .menubutton{
+        background-color: black;
+      }
+      .change .span1{
+        background-color: white;
+      }
+      .change .span2{
+          background-color: white;
+      }
+      .change .sun{
+        background-image: url('day-sun-expand.png');
+      }
+      .change .dayrocks{
+        background-image: url('day-rocks-expand.png');
+      }
+      .change #sunray{
+        background-image: url('day-rays-expand.png');
+      }
+      .change .moon{
+        background-image: url('night-moon-expand.png');
+      }
+      .change .nightrocks{
+        background-image: url('night-rocks-expand.png');
+      }
+      .change #nightray{
+        background-image: url('night-rays-expand.png');
+      }
+      .change .dayballoon{
+        display: block;
+      }
+      .change .dayplane{
+        display: none;
+      }
+      .change .nightplane{
+        display: none;
+      }
+      .change .nightballoon{
+        display: block;
+      }
+      .change .dayfloat{
+        display:block;
+        animation: floatup 0.5s linear;
+        }
+        @keyframes floatup{
+          0%{
+            opacity:0;
+          }
+          100%{
+            opacity:1;
+          }
+        }
+        .change .nightfloat{
+        display:block;
+        animation: floatup 0.5s linear;
+        }
+      .facebook, .twitter,.github, .instagram,.behance{
+          height: 35px;
+          width:35px;
+          border: 1px solid black;
+          border-radius: 50%;
+          position: absolute;
+          z-index:200;
+          background-color:rgb(39, 39, 39);
+          align-content: center;
+      }
+      .facebook{
+        left:44vw;
+        margin-left: -87.5px;
+        bottom:5vh;
+        margin-bottom: -17.5px;
+      }
+      .twitter{
+        left:47vw;
+        margin-left: -52.5px;
+        bottom:5vh;
+        margin-bottom: -17.5px;
+      }
+      .github{
+        left:50vw;
+        margin-left: -17.5px;
+        bottom:5vh;
+        margin-bottom: -17.5px;
+      }
+      .behance{
+        right:44vw;
+        margin-right: -87.5px;
+        bottom:5vh;
+        margin-bottom: -17.5px;
+      }
+      .instagram{
+        right:47vw;
+        margin-right: -52.5px;
+        bottom:5vh;
+        margin-bottom: -17.5px;
+      }
+      #fb1{
+        margin-top:8px;
+        margin-left: 12px;
+        font-size: 20px;
+        color:#D295E5;
+        text-decoration: none;
+      }
+      #tw1{
+        padding-top: 8px;
+        padding-left:9px;
+        font-size: 20px;
+        color:#D295E5;
+        text-decoration: none;
+      }
+      #gt1{
+        padding-top: 6.5px;
+        padding-left:7.8px;
+        font-size: 23px;
+        color:#D295E5;
+        text-decoration: none;
+      }
+      #ins1{
+        padding-top: 6.5px;
+        padding-left:7.8px;
+        font-size: 23px;
+        color:#D295E5;
+        text-decoration: none;
+      }
+      #be1{
+        padding:9px;
+        font-size: 17px;
+        color:#D295E5;
+        text-decoration: none;
+      }
+      .facebook:hover,.twitter:hover,.github:hover,.instagram:hover,.behance:hover{
+        background-color: black;
+      }
+      .facebook:hover #fb1{
+        color:aliceblue;
+      }
+      .twitter:hover #tw1{
+        color:aliceblue;
+      }
+      .github:hover #gt1{
+        color:aliceblue;
+      }
+      .instagram:hover #ins1{
+        color:aliceblue;
+      }
+      .behance:hover #be1{
+        color:aliceblue;
+      }
+      .facebook2, .twitter2,.github2, .instagram2,.behance2{
+          height: 35px;
+          width:35px;
+          border: 1px solid black;
+          border-radius: 50%;
+          position: absolute;
+          z-index:200;
+          background-color:rgb(39, 39, 39);
+          align-content: center;
+      }
+      .facebook2{
+        left:44vw;
+        margin-left: -87.5px;
+        bottom:5vh;
+        margin-bottom: -17.5px;
+      }
+      .twitter2{
+        left:47vw;
+        margin-left: -52.5px;
+        bottom:5vh;
+        margin-bottom: -17.5px;
+      }
+      .github2{
+        left:50vw;
+        margin-left: -17.5px;
+        bottom:5vh;
+        margin-bottom: -17.5px;
+      }
+      .behance2{
+        right:44vw;
+        margin-right: -87.5px;
+        bottom:5vh;
+        margin-bottom: -17.5px;
+      }
+      .instagram2{
+        right:47vw;
+        margin-right: -52.5px;
+        bottom:5vh;
+        margin-bottom: -17.5px;
+      }
+      #fb2{
+        margin-top:8px;
+        margin-left: 12px;
+        font-size: 20px;
+        color:#FEB94A;
+        text-decoration: none;
+      }
+      #tw2{
+        padding-top: 8px;
+        padding-left:9px;
+        font-size: 20px;
+        color:#FEB94A;
+        text-decoration: none;
+      }
+      #gt2{
+        padding-top: 6.5px;
+        padding-left:7.8px;
+        font-size: 23px;
+        color:#FEB94A;
+        text-decoration: none;
+      }
+      #ins2{
+        padding-top: 6.5px;
+        padding-left:7.8px;
+        font-size: 23px;
+        color:#FEB94A;
+        text-decoration: none;
+      }
+      #be2{
+        padding:9px;
+        font-size: 17px;
+        color:#FEB94A;
+        text-decoration: none;
+      }
+      .facebook2:hover,.twitter2:hover,.github2:hover,.instagram2:hover,.behance2:hover{
+        background-color: black;
+      }
+      .facebook2:hover #fb2{
+        color:aliceblue;
+      }
+      .twitter2:hover #tw2{
+        color:aliceblue;
+      }
+      .github2:hover #gt2{
+        color:aliceblue;
+      }
+      .instagram2:hover #ins2{
+        color:aliceblue;
+      }
+      .behance2:hover #be2{
+        color:aliceblue;
+      }
+      .dd .day{
+        animation: daydiss 2s linear;
+      }
+      @keyframes daydiss{
+        0%{
+          opacity: 1;
+        }
+        50%{
+          opacity: 0.5;
+        }
+        100%{
+          opactity:0;
+        }
+      }
+      .na .night{
+        animation: nightapp 2s linear;
+      }
+      @keyframes nightapp{
+        0%{
+          opacity: 0;
+        }
+        50%{
+          opacity: 0.5;
+        }
+        100%{
+          opactity:1;
+        }
+      }
+</style>
+
+        </style>
+        <body>
+            
+            
+            <div>
+                <div id="birdcontainer" class="container">
+                  <div class="bird-container bird-container--one">
+                    <div class="bird bird--one"></div>
+                  </div>
+                  <div class="bird-container bird-container--two">
+                    <div class="bird bird--two"></div>
+                  </div>
+                  <div class="bird-container bird-container--three">
+                    <div class="bird bird--three"></div>
+                  </div>
+                  <div class="bird-container bird-container--four">
+                    <div class="bird bird--four"></div>
+                  </div>
+                </div>
+              </div>
+              <div id="snowcontainer" class="containersnow">
+            </div>
+            <div id="raincontainer" class="thunder">
+                <canvas id="canvas1"></canvas>
+                <canvas id="canvas2"></canvas>
+                <canvas id="canvas3"></canvas>
+            </div>
+            <div class="bordertrb"></div>
+            <div class="logo1"></div>
+            <div class="logo2"></div>
+            <div class="logo3"></div>
+            <div class="logo4"></div>
+            <div class="logo5"></div>
+            <div class="logo6"></div>
+            <div class="logo7"></div>
+            <div class="borderlt"></div>
+            <div class="borderlb"></div>
+            <div id="main" class="menu" onclick="togglefn(this)"><div id="daytime" class="day">
+              <div class="sunrays" id="sunray"></div>
+              <div class="sun"></div>
+              <div class="dayfloat"></div>
+              <div class="dayrocks"></div>
+              <div class="dayclouds"></div>
+              <div class="dayballoon"></div>
+              <div class="dayplane"></div>
+          </div> <div id="nighttime" class="night">
+              <div class="nightrays" id="nightray"></div>
+              <div class="moon"></div>
+              <div class="nightplane"></div>
+              <div class="nightfloat"></div>
+              <div class="nightballoon"></div>
+              <div id="nightrock" class="nightrocks"></div>
+              <div class="nightclouds"></div>
+          </div>  <div class="menubutton"></div> <span class="span1"></span><span class="span2"></span></span></div></div>
+            <div id="socialiconsn" class="social">
+                <div class="facebook" ><a id="fb1" href="https://www.facebook.com/people/Aayush-Agarwal/100004764855806" class="fa fa-facebook"></a></div>
+                <div class="twitter"><a id="tw1" href="https://twitter.com/Aayush967988" class="fa fa-twitter"></a></div>
+                <div class="github" ><a id="gt1"href="https://github.com/KylixMedusa" class="fa fa-github"></a></div>
+                <div class="instagram" ><a id="ins1"href="https://instagram.com/KylixMedusa" class="fa fa-instagram"></a></div>
+                <div class="behance" ><a id="be1"href="https://www.behance.net/KylixMedusa" class="fa fa-behance"></a></div>
+            </div>
+            <div id="socialiconsd" class="social2">
+              <div class="facebook2" ><a id="fb2"href="https://www.facebook.com/people/Aayush-Agarwal/100004764855806" class="fa fa-facebook"></a></div>
+              <div class="twitter2"><a id="tw2"href="https://twitter.com/Aayush967988" class="fa fa-twitter"></a></div>
+              <div class="github2" ><a id="gt2"href="https://github.com/KylixMedusa" class="fa fa-github"></a></div>
+              <div class="instagram2" ><a id="ins2" href="https://instagram.com/KylixMedusa" class="fa fa-instagram"></a></div>
+              <div class="behance2" ><a id="be2" href="https://www.behance.net/KylixMedusa" class="fa fa-behance"></a></div>
+          </div>
+            <script>
+                var canvas1 = document.getElementById('canvas1');
+var canvas2 = document.getElementById('canvas2');
+var canvas3 = document.getElementById('canvas3');
+var ctx1 = canvas1.getContext('2d');
+var ctx2 = canvas2.getContext('2d');
+var ctx3 = canvas3.getContext('2d');
+
+var rainthroughnum = 400;
+var speedRainTrough = 15;
+var RainTrough = [];
+
+var rainnum = 400;
+var rain = [];
+
+var lightning = [];
+var lightTimeCurrent = 0;
+var lightTimeTotal = 0;
+
+var w = canvas1.width = canvas2.width = canvas3.width = window.innerWidth;
+var h = canvas1.height = canvas2.height = canvas3.height = window.innerHeight;
+window.addEventListener('resize', function() {
+  w = canvas1.width = canvas2.width = canvas3.width = window.innerWidth;
+  h = canvas1.height = canvas2.height = canvas3.height = window.innerHeight;
+});
+
+function random(min, max) {
+  return Math.random() * (max - min + 1) + min;
+}
+
+function clearcanvas1() {
+  ctx1.clearRect(0, 0, w, h);
+}
+
+function clearcanvas2() {
+  ctx2.clearRect(0, 0, canvas2.width, canvas2.height);
+}
+
+function clearCanvas3() {
+  ctx3.globalCompositeOperation = 'destination-out';
+  ctx3.fillStyle = 'rgba(0,0,0,' + random(1, 30) / 100 + ')';
+  ctx3.fillRect(0, 0, w, h);
+  ctx3.globalCompositeOperation = 'source-over';
+};
+
+function createRainTrough() {
+  for (var i = 0; i < rainthroughnum; i++) {
+    RainTrough[i] = {
+      x: random(0, w),
+      y: random(0, h),
+      length: Math.floor(random(1, 830)),
+      opacity: Math.random() * 0.2,
+      xs: random(-2, 2),
+      ys: random(10, 20)
+    };
+  }
+}
+
+function createRain() {
+  for (var i = 0; i < rainnum; i++) {
+    rain[i] = {
+      x: Math.random() * w,
+      y: Math.random() * h,
+      l: Math.random() * 1,
+      xs: -4 + Math.random() * 4 + 2,
+      ys: Math.random() * 10 + 10
+    };
+  }
+}
+
+function createLightning() {
+  var x = random(100, (w - 100));
+  var y = random(0, h / 4);
+
+  var createCount = random(1, 3);
+  for (var i = 0; i < createCount; i++) {
+    single = {
+      x: x,
+      y: y,
+      xRange: random(5, 30),
+      yRange: random(10, 25),
+      path: [{
+        x: x,
+        y: y
+      }],
+      pathLimit: random(40, 55)
+    };
+    lightning.push(single);
+  }
+};
+
+function drawRainTrough(i) {
+  ctx1.beginPath();
+  var grd = ctx1.createLinearGradient(0, RainTrough[i].y, 0, RainTrough[i].y + RainTrough[i].length);
+  grd.addColorStop(0, "rgba(255,255,255,0)");
+  grd.addColorStop(1, "rgba(255,255,255," + RainTrough[i].opacity + ")");
+
+  ctx1.fillStyle = grd;
+  ctx1.fillRect(RainTrough[i].x, RainTrough[i].y, 1, RainTrough[i].length);
+  ctx1.fill();
+}
+
+function drawRain(i) {
+  ctx2.beginPath();
+  ctx2.moveTo(rain[i].x, rain[i].y);
+  ctx2.lineTo(rain[i].x + rain[i].l * rain[i].xs, rain[i].y + rain[i].l * rain[i].ys);
+  ctx2.strokeStyle = 'rgba(174,194,224,0.5)';
+  ctx2.lineWidth = 1;
+  ctx2.lineCap = 'round';
+  ctx2.stroke();
+}
+
+function drawLightning() {
+  for (var i = 0; i < lightning.length; i++) {
+    var light = lightning[i];
+
+    light.path.push({
+      x: light.path[light.path.length - 1].x + (random(0, light.xRange) - (light.xRange / 2)),
+      y: light.path[light.path.length - 1].y + (random(0, light.yRange))
+    });
+
+    if (light.path.length > light.pathLimit) {
+      lightning.splice(i, 1);
+    }
+
+    ctx3.strokeStyle = 'rgba(255, 255, 255, .1)';
+    ctx3.lineWidth = 3;
+    if (random(0, 15) === 0) {
+      ctx3.lineWidth = 6;
+    }
+    if (random(0, 30) === 0) {
+      ctx3.lineWidth = 8;
+    }
+
+    ctx3.beginPath();
+    ctx3.moveTo(light.x, light.y);
+    for (var pc = 0; pc < light.path.length; pc++) {
+      ctx3.lineTo(light.path[pc].x, light.path[pc].y);
+    }
+    if (Math.floor(random(0, 30)) === 1) { //to fos apo piso
+      ctx3.fillStyle = 'rgba(255, 255, 255, ' + random(1, 3) / 100 + ')';
+      ctx3.fillRect(0, 0, w, h);
+    }
+    ctx3.lineJoin = 'miter';
+    ctx3.stroke();
+  }
+};
+
+function animateRainTrough() {
+  clearcanvas1();
+  for (var i = 0; i < rainthroughnum; i++) {
+    if (RainTrough[i].y >= h) {
+      RainTrough[i].y = h - RainTrough[i].y - RainTrough[i].length * 5;
+    } else {
+      RainTrough[i].y += speedRainTrough;
+    }
+    drawRainTrough(i);
+  }
+}
+
+function animateRain() {
+  clearcanvas2();
+  for (var i = 0; i < rainnum; i++) {
+    rain[i].x += rain[i].xs;
+    rain[i].y += rain[i].ys;
+    if (rain[i].x > w || rain[i].y > h) {
+      rain[i].x = Math.random() * w;
+      rain[i].y = -20;
+    }
+    drawRain(i);
+  }
+}
+
+function animateLightning() {
+  clearCanvas3();
+  lightTimeCurrent++;
+  if (lightTimeCurrent >= lightTimeTotal) {
+    createLightning();
+    lightTimeCurrent = 0;
+    lightTimeTotal = 200;  //rand(100, 200)
+  }
+  drawLightning();
+}
+
+function init() {
+  createRainTrough();
+  createRain();
+  window.addEventListener('resize', createRainTrough);
+}
+init();
+
+function animloop() {
+  animateRainTrough();
+  animateRain();
+  animateLightning();
+  requestAnimationFrame(animloop);
+}
+animloop();
+            </script>
+            <script type="text/javascript">
+              setInterval(change_Background,1000*40);
+              function change_Background(){
+                full_animate();
+              }
+              function full_animate(){
+                document.getElementById("nighttime").style.display="none";
+                  document.getElementById("daytime").style.display="block";
+                  document.getElementById("birdcontainer").style.display="block";
+                  document.getElementById("snowcontainer").style.display="none";
+                  document.getElementById("raincontainer").style.display="none";
+                  document.getElementById("socialiconsn").style.display="none";
+                  document.getElementById("socialiconsd").style.display="block";
+                  setTimeout(function() {
+                    document.getElementById("nighttime").style.display="block";
+                    document.getElementById("main").classList.add("dd");
+                  document.getElementById("main").classList.add("na");},9000);
+                  setTimeout(function() { 
+                  
+                  document.getElementById("birdcontainer").style.display="block";
+                  document.getElementById("snowcontainer").style.display="none";
+                  document.getElementById("raincontainer").style.display="none";
+                  document.getElementById("socialiconsn").style.display="block";
+                  document.getElementById("socialiconsd").style.display="none";}, 10000);
+                  setTimeout(function() {
+                    document.getElementById("daytime").style.display="none";},11000);
+                  setTimeout(function() { document.getElementById("nighttime").style.display="block";
+                  document.getElementById("daytime").style.display="none";
+                  document.getElementById("birdcontainer").style.display="none";
+                  document.getElementById("snowcontainer").style.display="none";
+                  document.getElementById("raincontainer").style.display="block";
+                  document.getElementById("socialiconsn").style.display="block";
+                  document.getElementById("socialiconsd").style.display="none";}, 20000);
+                  setTimeout(function() { document.getElementById("nighttime").style.display="block";
+                  document.getElementById("daytime").style.display="none";
+                  document.getElementById("birdcontainer").style.display="none";
+                  document.getElementById("snowcontainer").style.display="block";
+                  document.getElementById("raincontainer").style.display="none";
+                  document.getElementById("socialiconsn").style.display="block";
+                  document.getElementById("socialiconsd").style.display="none";}, 30000);
+                  
+                  setTimeout(function() { document.getElementById("nighttime").style.display="none";
+                  document.getElementById("daytime").style.display="block";
+                  document.getElementById("birdcontainer").style.display="block";
+                  document.getElementById("snowcontainer").style.display="none";
+                  document.getElementById("raincontainer").style.display="none";
+                  document.getElementById("socialiconsn").style.display="none";
+                  document.getElementById("socialiconsd").style.display="block";
+                  document.getElementById("main").classList.remove("dd");
+                  document.getElementById("main").classList.remove("na");}, 40000);
+              }
+              change_Background();
+            </script>
+            <script type="text/javascript">
+              function togglefn(x){
+                x.classList.toggle("change");
+              }
+            </script>
+        </body>
+    </head>
+</html>
